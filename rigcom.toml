@@ -1,0 +1,62 @@
+# ============================================================
+#  RigCom v8.0 — Configuración del proyecto
+#  Intelligent Compiler Platform
+#  Author: Richard Felipe Urbina
+#  φ = 1.6180339887498948482 · P(A) ∈ {0,1}
+# ============================================================
+
+[project]
+name    = "rigcom"
+version = "8.0.0"
+author  = "Richard Felipe Urbina"
+
+[build]
+# Target platform (aarch64-linux-android para Termux/Snapdragon)
+target           = "aarch64-linux-android"
+
+# Nivel de optimización: O0 | O1 | O2 | O3
+optimize         = "O3"
+
+# Defines del preprocesador
+defines          = [
+    "PHI=1.6180339887498948482",
+    "RIGCOM_VERSION_MAJOR=8",
+    "RIGCOM_VERSION_MINOR=0",
+    "RIGCOM_SCHUMANN=7.83"
+]
+
+# Archivos fuente (glob)
+sources          = ["src/**/*.c"]
+
+# Directorios de include adicionales
+include_dirs     = ["include"]
+
+# Usar backend ARM64 nativo en lugar de LLVM
+native_backend   = false
+
+# Número de cores para compilación paralela (0 = auto)
+cores            = 4
+
+# Activar bootstrap (self-compilation)
+bootstrap        = false
+
+# Activar benchmarks
+bench            = false
+
+[output]
+executable       = "build/bin/rigcom"
+objects_dir      = "build/obj"
+
+[ui]
+# Puerto del dashboard WebSocket
+port             = 8080
+
+# Ruta al dashboard HTML (relativa al directorio del proyecto)
+dashboard        = "ui/index.html"
+
+[preproc]
+# Rutas de búsqueda adicionales para #include
+include_paths    = ["/usr/include", "/usr/local/include"]
+
+# Macros predefinidos adicionales (aparte de los de [build].defines)
+extra_defines    = []

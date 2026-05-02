@@ -1,0 +1,35 @@
+/*
+ * RigCom v4.0 — Hello World en .rigc
+ * φ = 1.6180339887498948482
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+#define PHI 1.6180339887498948482
+#define VERSION "4.0.0"
+#define GREET(name) printf("Hola, %s!\n", name)
+
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+
+double fibonacci_phi(int n) {
+    /* Approximation via golden ratio */
+    double phi = PHI;
+    double result = 1.0;
+    for (int i = 0; i < n; i++) {
+        result *= phi;
+    }
+    return result;
+}
+
+int main(void) {
+    GREET("RigCom");
+    printf("Versión:  %s\n", VERSION);
+    printf("φ (phi):  %.19f\n", PHI);
+    printf("10! =     %d\n", factorial(10));
+    printf("φ^10 ≈    %.6f\n", fibonacci_phi(10));
+    printf("Schumann: 7.83 Hz\n");
+    return 0;
+}
